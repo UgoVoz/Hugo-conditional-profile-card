@@ -30,13 +30,46 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
+
+  // nombres y apellidos
+  if (variables.name == null) variables.name = "Name";
+  if (variables.lastName == null) variables.lastName = "LastName";
+
+  // Redes Sociales
+  if (variables.twitter != null) variables.twitter;
+  if (variables.github != null) variables.github;
+  if (variables.linkedin != null) variables.linkedin;
+  if (variables.instagram != null) variables.instagram;
+
+  // puesto o cargo
+  let userRole = "<h2>Web Developer</h2>";
+  if (variables.role == "Floor Planner") userRole = "<h2>Floor Planner</h2>";
+  else if (variables.role == "Technical Writter")
+    userRole = "<h2>Technical Writter</h2>";
+  else if (variables.role == null) userRole = "<h2>Role</h2>";
+
+  // pais y ciudad
+  if (variables.country == null) variables.country = "Country";
+  else if (variables.country == "Germany") variables.country = "Germany";
+  else if (variables.country == "USA") variables.country = "USA";
+  else if (variables.country == "Canada") variables.country = "Canada";
+  else if (variables.country == "Venezuela") variables.country = "Venezuela";
+
+  if (variables.city == null) variables.city = "City";
+  else if (variables.city == "Munich") variables.city = "Munich";
+  else if (variables.city == "Miami") variables.city = "Miami";
+  else if (variables.city == "Toronto") variables.city = "Toronto";
+  else if (variables.city == "Caracas") variables.city = "Caracas";
+
+  console.log(variables.socialMediaPosition);
+
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h1>${variables.name} ${variables.lastName}</h1>
+          <h2>${variables.role}</h2>
+          <h3>${variables.city}, ${variables.country}</h3>
+          <ul class=${variables.socialMediaPosition}>
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
